@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">LogReg</string>
+    <string name="bejelentkez_s">Bejelentkezés</string>
+    <string name="Register">Regisztráció</string>
+    <string name="kijelentkez_s">Kijelentkezés</string>
+    <string name="e_mail">E-mail</string>
+    <string name="felhaszn_l_n_v">Felhasználónév</string>
+    <string name="jelsz">Jelszó</string>
+    <string name="teljes_n_v">Teljes név</string>
+    <string name="vissza">Vissza</string>
+</resources>
