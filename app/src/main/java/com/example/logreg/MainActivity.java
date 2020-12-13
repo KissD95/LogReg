@@ -12,10 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button btnRegister,btnLogin,btnList;
+    Button btnRegister,btnLogin;
     EditText editTextUsername,editTextPassword;
     DbHelper adatbazis;
-    TextView textViewDatas;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,15 +26,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void init() {
         btnLogin=findViewById(R.id.btnLogin);
         btnRegister=findViewById(R.id.btnRegister);
-        btnList=findViewById(R.id.btnList);
         editTextUsername=findViewById(R.id.editTextUsername);
         editTextPassword=findViewById(R.id.editTextPassword);
 
-        textViewDatas=findViewById(R.id.textViewDatas);
-
         btnRegister.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
-        btnList.setOnClickListener(this);
 
         adatbazis= new DbHelper(MainActivity.this);
     }
@@ -50,9 +45,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent register = new Intent(this,RegisterActivity.class);
                 startActivity(register);
                 finish();
-                break;
-            case R.id.btnList:
-                adatLekerdezes();
                 break;
                 
         }
@@ -77,25 +69,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             finish();
         }
 
-    }
-    private void adatLekerdezes() {
-        Cursor adatok= adatbazis.adatLekeredezes();
-        if (adatok == null){
-            Toast.makeText(this, "Hiba történt!", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (adatok.getCount()==0){
-            Toast.makeText(this, "Nincs még adat felvéve!", Toast.LENGTH_SHORT).show();
-        }
-        StringBuilder builder = new StringBuilder();
-        while (adatok.moveToNext()){
-            builder.append("Id: ").append(adatok.getInt(0)).append("\n");
-            builder.append("Email: ").append(adatok.getString(1)).append("\n");
-            builder.append("Flehasználónév: ").append(adatok.getString(2)).append("\n");
-            builder.append("Jelszó: ").append(adatok.getString(3)).append("\n");
-            builder.append("Teljes név: ").append(adatok.getString(4)).append("\n\n");
-        }
-        textViewDatas.setText(builder);
     }
 
 }

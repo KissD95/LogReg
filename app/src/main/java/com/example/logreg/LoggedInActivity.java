@@ -40,7 +40,7 @@ public class LoggedInActivity extends AppCompatActivity {
 
     }
     private void adatLekerdezes() {
-        Cursor adatok= adatbazis.adatLekeredezes();
+        Cursor adatok= adatbazis.userDatas();
         if (adatok == null){
             Toast.makeText(this, "Hiba történt!", Toast.LENGTH_SHORT).show();
             return;
@@ -50,7 +50,7 @@ public class LoggedInActivity extends AppCompatActivity {
         }
         StringBuilder builder = new StringBuilder();
         while (adatok.moveToNext()){
-            builder.append("Üdvözlünk ").append(adatok.getString(4)).append("!");
+            builder.append("Üdvözlünk ").append(adatok.getString(0)).append("!");
 
         }
         textViewUsername.setText(builder);

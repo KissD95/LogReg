@@ -32,18 +32,7 @@
         android:id="@+id/btnRegister"
         android:textSize="25sp"
         android:text="@string/Register"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnList"
-        android:text="list"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewDatas"
-        android:textSize="25sp"
-        android:scrollbars="vertical"
-        android:maxLines="999"/>
+
 
 
 

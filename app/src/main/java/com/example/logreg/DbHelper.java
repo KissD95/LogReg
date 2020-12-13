@@ -59,7 +59,7 @@ public class DbHelper extends SQLiteOpenHelper {
             SQLiteDatabase db=this.getReadableDatabase();
 
             return db.rawQuery("SELECT "+COL_FELHNEV+","+COL_EMAIL+","+COL_JELSZO+" FROM "+TABLE_NAME+
-                    " WHERE ("+COL_FELHNEV+" OR "+COL_EMAIL+"=?) AND "+COL_JELSZO+"=?",new String[]{userName,passWord});
+                    " WHERE ("+COL_FELHNEV+"=? OR "+COL_EMAIL+"=?) AND "+COL_JELSZO+"=?",new String[]{userName,userName,passWord});
     }
     public Cursor userDatas(){
         SQLiteDatabase db=this.getReadableDatabase();
@@ -67,10 +67,4 @@ public class DbHelper extends SQLiteOpenHelper {
         return  db.query(TABLE_NAME,new String[]{COL_TELJESNEV},null,null,null,null,null);
     }
 
-    public Cursor adatLekeredezes() {
-        SQLiteDatabase db=this.getReadableDatabase();
-
-        return db.query(TABLE_NAME,new String[]{COL_ID,COL_EMAIL,COL_FELHNEV,COL_JELSZO,COL_TELJESNEV},null,null,
-                null,null,null,null);
-    }
 }
